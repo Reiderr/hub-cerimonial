@@ -43,11 +43,16 @@ $('document').ready(function()
          
       $("#btn-login").html('<img src="ajax-loader.gif" /> &nbsp; Entrando ...');
       setTimeout(' window.location.href = "evento/dashboard.php"; ',1000);
+    }
+     if(response =="admin"){
+      $("#btn-login").html(' Entrando ...');
+      setTimeout(' window.location.href = "evento/dashboard2.php"; ',1000);
      }
-     else{
+
+     if(response =="erro"){
       $("#error").fadeIn(1, function(){      
         $("#error").html('<div class="alert alert-danger"> <span class="glyphicon glyphicon-info-sign"></span> &nbsp;<h3> senha ou email incorretos !</h3></div>');
-           $("#btn-login").html('<span class="glyphicon glyphicon-log-in"></span> &nbsp; entrar');
+        $("#btn-login").html('<span class="glyphicon glyphicon-log-in"></span> &nbsp; entrar');
          });
      }
      }

@@ -1,4 +1,5 @@
 <?php
+if(isset($_POST['btn-login'])){
   session_start();
   include 'dbconfig.php';
   $con = connectDB();
@@ -18,17 +19,24 @@
 
    
     if($row['senha']==$password){
-    
-    echo "ok"; // log in
+      if ($row['admin'] == true){
+        echo "admin";
+      }
+      else{
+        echo "ok"; // log in
+      }
     $_SESSION['user_session'] = $row['nome'];
    }
+
    else{
-    echo "email or password does not exist."; // wrong details 
+    echo "erro"; // wrong details 
    }
     
   }
   catch(PDOException $e){
    echo $e->getMessage();
   }
+}
+
 
 ?>

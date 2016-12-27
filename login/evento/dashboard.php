@@ -56,9 +56,15 @@
 
             <ul class="nav">
                 <li class="active">
-                    <a href="dashboard.html">
+                    <a href="dashboard.php">
                         <i class="pe-7s-graph"></i>
                         <p>Dashboard</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="criarEvento.php">  
+                        <i class="pe-7s-pen"></i>
+                        <p>Criar Evento</p>
                     </a>
                 </li>
                 <li>
