@@ -37,7 +37,6 @@
 
     <!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" -->
 
-
     	<div class="sidebar-wrapper">
             <div class="logo">
                 <a href="dashboard.php" class="simple-text">
@@ -109,7 +108,34 @@
     </div>
 
     <div class="main-panel">
-                <div class="content">
+                <nav class="navbar navbar-default navbar-fixed">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Criar Evento</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-left">
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#">
+                                Log out
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+        <div class="content">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
@@ -118,39 +144,18 @@
                                 <h4 class="title">Criar Evento</h4>
                             </div>
                             <div class="content">
-                                <form>
+                                <form method="POST" id="cadastroEvento" name = "cadastroEvento">
                                     <div class="row">
-                                        <div class="col-md-5">
+                                        <div class="col-md-8">
                                             <div class="form-group">
-                                                <label>Company (disabled)</label>
-                                                <input type="text" class="form-control" disabled placeholder="Company" value="Creative Code Inc.">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label>Username</label>
-                                                <input type="text" class="form-control" placeholder="Username" value="michael23">
+                                                <label>Nome do Evento</label>
+                                                <input type="text" name='nomeEvento' class="form-control" placeholder="Nome do Evento" >
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">Email address</label>
-                                                <input type="email" class="form-control" placeholder="Email">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>First Name</label>
-                                                <input type="text" class="form-control" placeholder="Company" value="Mike">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>Last Name</label>
-                                                <input type="text" class="form-control" placeholder="Last Name" value="Andrew">
+                                                <label for="exampleInputEmail1">Numero de Convidados</label>
+                                                <input type="text" name='numeroConvidados' class="form-control" placeholder="Numero de convidados">
                                             </div>
                                         </div>
                                     </div>
@@ -158,43 +163,50 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>Address</label>
-                                                <input type="text" class="form-control" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09">
+                                                <label>Endereço do Evento</label>
+                                                <input type="text" name = "endereco" class="form-control" placeholder="endereço">
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>City</label>
-                                                <input type="text" class="form-control" placeholder="City" value="Mike">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Country</label>
-                                                <input type="text" class="form-control" placeholder="Country" value="Andrew">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Postal Code</label>
-                                                <input type="number" class="form-control" placeholder="ZIP Code">
-                                            </div>
-                                        </div>
-                                    </div>
 
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>About Me</label>
-                                                <textarea rows="5" class="form-control" placeholder="Here can be your description" value="Mike">Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</textarea>
+                                                <label>Listas de Presentes</label>
+                                                <textarea rows="5" name = "presentes" class="form-control" placeholder="Links para as listas de presente online(Casas Bahia, Ricado eletro...)"></textarea>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <button type="submit" class="btn btn-info btn-fill pull-right">Criar Evento</button>
+                                    <style>
+                                    #map-canvas {height: 400px}
+                                    </style>
+                                    <label>Escolha no mapa o local do seu evento!</label>
+                                    <div class = "row">
+                                        <div class ="col-md-4">
+                                            <div class ="form-group">
+                                                <input id="search-txt" type="text" class="form-control" placeholder="Digite o Local do evento">
+                                            </div>
+                                        </div>
+                                        <div class ="col-md-2">
+                                            <div class ="form-group">
+                                                <input id="search-btn" type="button" class = "btn btn-info btn-fill pull-right" value="Buscar">
+                                            </div>
+                                        </div>
+                                        <div class ="col-md-2">
+                                            <div class ="form-group">
+                                                <input id="detect-btn" type="button" class = "btn btn-info btn-fill pull-right" value="Detectar minha localização">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class ="col-md-8" id="map-canvas"></div>
+                                    <!-- Gambiarra!!! Cria um campo invizivel e o preenche com as coordenadas, daqui é possivel pegar os valores e enviar para o PHP  -->
+                                    <input name = "latitude" class = "col-md-8" type="text" id="map-output" value="" style="visibility:hidden"></input>
+                                    <input name = "longitude" class = "col-md-8" type="text" id="map-output2" value="" style="visibility:hidden"></input>
+
+
+                                    <button name = "criarEvento" id ="criarEvento" type="submit" class="btn btn-info btn-fill pull-right">Criar Evento</button>
                                     <div class="clearfix"></div>
                                 </form>
                             </div>
@@ -203,9 +215,6 @@
                 </div>
             </div>
         </div>
-
-
-
     </div>
 </div>
 
@@ -216,23 +225,23 @@
     <script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
 	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
 
+    <!--  script google maps -->
+    <script src = "maps.js"></script>
+    <script src="//maps.googleapis.com/maps/api/js?v=3&amp;sensor=false&amp;key=AIzaSyApzbVcgIb-qVPP3jNbCTB0TmxMmTHK0es&amp;callback=loadmap" defer></script>
+
 	<!--  Checkbox, Radio & Switch Plugins -->
 	<script src="assets/js/bootstrap-checkbox-radio-switch.js"></script>
 
-	<!--  Charts Plugin -->
-	<script src="assets/js/chartist.min.js"></script>
+    <!--  Scripts de validação -->
+
+    <script src="jquery-validation-1.11.1/jquery.validate.js"></script>
+    <script src="evento.js"></script>
 
     <!--  Notifications Plugin    -->
     <script src="assets/js/bootstrap-notify.js"></script>
 
-    <!--  Google Maps Plugin    -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
-
     <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
 	<script src="assets/js/light-bootstrap-dashboard.js"></script>
-
-	<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
-	<script src="assets/js/demo.js"></script>
 
 
 </html>
