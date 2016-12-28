@@ -44,7 +44,7 @@
                      session_start();
                      $user = $_SESSION['user_session'];
                      echo 'Bem Vindo, ', $user;
-                     ?>
+                    ?>
                 </a>
             </div>
 
@@ -161,10 +161,16 @@
                                     </div>
 
                                     <div class="row">
-                                        <div class="col-md-12">
+                                        <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Endereço do Evento</label>
                                                 <input type="text" name = "endereco" class="form-control" placeholder="endereço">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Url do evento</label>
+                                                <input type="text" name = "URL" class="form-control" placeholder="este será o endereço do seu site: Ex meu_site = tbd.com/evento/meu_site">
                                             </div>
                                         </div>
                                     </div>
@@ -182,21 +188,21 @@
                                     <style>
                                     #map-canvas {height: 400px}
                                     </style>
-                                    <label>Escolha no mapa o local do seu evento!</label>
+                                    <label>Escolha no mapa o local do seu evento! Arraste o marcador para indicar o local exato.</label>
                                     <div class = "row">
                                         <div class ="col-md-4">
                                             <div class ="form-group">
                                                 <input id="search-txt" type="text" class="form-control" placeholder="Digite o Local do evento">
                                             </div>
                                         </div>
-                                        <div class ="col-md-2">
+                                        <div class ="col-md-1">
                                             <div class ="form-group">
-                                                <input id="search-btn" type="button" class = "btn btn-info btn-fill pull-right" value="Buscar">
+                                                <input id="search-btn" type="button" class = "btn btn-info btn-fill " value="Buscar">
                                             </div>
                                         </div>
-                                        <div class ="col-md-2">
+                                        <div class ="col-md-6">
                                             <div class ="form-group">
-                                                <input id="detect-btn" type="button" class = "btn btn-info btn-fill pull-right" value="Detectar minha localização">
+                                                <input id="detect-btn" type="button" class = "btn btn-info btn-fill pull-left" value="Detectar minha localização">
                                             </div>
                                         </div>
                                     </div>
@@ -206,7 +212,9 @@
                                     <input name = "longitude" class = "col-md-8" type="text" id="map-output2" value="" style="visibility:hidden"></input>
 
 
-                                    <button name = "criarEvento" id ="criarEvento" type="submit" class="btn btn-info btn-fill pull-right">Criar Evento</button>
+                                    <div id = "success"></div>
+                                    <div id = "error"></div>
+                                    <button name = "criarEvento" id ="criarEvento" class="btn btn-info btn-fill pull-right">Criar Evento</button>
                                     <div class="clearfix"></div>
                                 </form>
                             </div>
