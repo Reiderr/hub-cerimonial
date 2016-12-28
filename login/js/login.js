@@ -37,8 +37,9 @@ $('document').ready(function()
     $("#error").fadeOut();
     $("#btn-login").html('<span class="glyphicon glyphicon-transfer"></span> &nbsp; Enviando ...');
    },
+
    success :  function(response)
-      {      
+      {  
      if(response=="ok"){
          
       $("#btn-login").html('<img src="ajax-loader.gif" /> &nbsp; Entrando ...');

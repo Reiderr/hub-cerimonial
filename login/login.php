@@ -11,13 +11,11 @@ if(isset($_POST['btn-login'])){
   $password = md5($user_password);
   
   try{ 
-  
-    $sql = "SELECT * FROM usuario WHERE  '$user_email' = email";
-    $result = mysql_query($sql, $con);
-    $row = mysql_fetch_array($result);
+    $stmt = $con->prepare("SELECT * FROM usuario WHERE  email = :email");
+    $stmt->bindParam(':email', $user_email);
+    $stmt->execute();
 
-
-   
+  foreach ($stmt as $row) {
     if($row['senha']==$password){
       if ($row['admin'] == true){
         echo "admin";
@@ -26,11 +24,13 @@ if(isset($_POST['btn-login'])){
         echo "ok"; // log in
       }
     $_SESSION['user_session'] = $row['nome'];
-   }
+    }
+
 
    else{
     echo "erro"; // wrong details 
    }
+ }
     
   }
   catch(PDOException $e){
