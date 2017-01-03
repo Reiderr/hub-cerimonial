@@ -35,17 +35,5 @@ include 'dbconfig.php';
 		header("Location: ../login/index.html");
 	}
 
-
-	/* EXEMPLO DE COMO FAZER UMA QUERY PARA RESOLVER A CRIPTOGRAFIA
-	$pass = md5('147852');
-	$sql = "SELECT nome FROM usuario WHERE  '$pass' = senha";
-	$result = mysql_query($sql, $con);
-	while($row = mysql_fetch_array($result)){
-            echo "<tr>";
-                echo "<td>" . $row['nome'] . "</td>";
-            echo "</tr>";
-        }
-	*/
-
     mysql_close($con);
 ?>

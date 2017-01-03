@@ -33,7 +33,7 @@
 <body>
 
 <div class="wrapper">
-    <div class="sidebar" data-color="purple" data-image="assets/img/sidebar-5.jpg">
+    <div class="sidebar" data-color="blue" data-image="assets/img/sidebar-5.jpg">
 
     <!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" -->
 
@@ -64,13 +64,13 @@
                 <li>
                     <a href="user.html">
                         <i class="pe-7s-user"></i>
-                        <p>User Profile</p>
+                        <p>Editar Perfil</p>
                     </a>
                 </li>
                 <li>
                     <a href="table.html">
                         <i class="pe-7s-note2"></i>
-                        <p>Table List</p>
+                        <p>Meus Eventos</p>
                     </a>
                 </li>
                 <li>
@@ -211,10 +211,13 @@
                                     <input name = "latitude" class = "col-md-8" type="text" id="map-output" value="" style="visibility:hidden"></input>
                                     <input name = "longitude" class = "col-md-8" type="text" id="map-output2" value="" style="visibility:hidden"></input>
 
-
+                                    <!-- exibe mensagem de erro ou sucesso #trabalhar esses outputs no javascript conforme desenvolvimento -->
                                     <div id = "success"></div>
                                     <div id = "error"></div>
-                                    <button name = "criarEvento" id ="criarEvento" class="btn btn-info btn-fill pull-right">Criar Evento</button>
+
+                                    <div class ="row">
+                                        <button name = "criarEvento" id ="criarEvento" class="btn btn-info btn-fill pull-right">Criar Evento</button>
+                                    </div>
                                     <div class="clearfix"></div>
                                 </form>
                             </div>
