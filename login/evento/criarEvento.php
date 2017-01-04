@@ -1,6 +1,14 @@
 <!doctype html>
 <html lang="en">
 <head>
+    <?php
+        // recupera o nome do usuário logado na sessão, aqui também será criada a verificação de login para
+        // acesso posteriormente
+        include '../dbconfig.php';
+        session_start();
+        $user = $_SESSION['user_session'];
+    ?>
+
 	<meta charset="utf-8" />
 	<link rel="icon" type="image/png" href="assets/img/favicon.ico">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -41,9 +49,9 @@
             <div class="logo">
                 <a href="dashboard.php" class="simple-text">
                     <?php
-                     session_start();
-                     $user = $_SESSION['user_session'];
-                     echo 'Bem Vindo, ', $user;
+                    // imprime o nome do usuário logado na sidebar
+                    $user_logado = getNomeSessao($user);
+                    echo 'Bem Vindo, ', $user_logado;
                     ?>
                 </a>
             </div>
@@ -237,7 +245,7 @@
 	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
 
     <!--  script google maps -->
-    <script src = "maps.js"></script>
+    <script src = "assets/js/maps.js"></script>
     <script src="//maps.googleapis.com/maps/api/js?v=3&amp;sensor=false&amp;key=AIzaSyApzbVcgIb-qVPP3jNbCTB0TmxMmTHK0es&amp;callback=loadmap" defer></script>
 
 	<!--  Checkbox, Radio & Switch Plugins -->
@@ -246,7 +254,7 @@
     <!--  Scripts de validação -->
 
     <script src="jquery-validation-1.11.1/jquery.validate.js"></script>
-    <script src="evento.js"></script>
+    <script src="assets/js/evento.js"></script>
 
     <!--  Notifications Plugin    -->
     <script src="assets/js/bootstrap-notify.js"></script>

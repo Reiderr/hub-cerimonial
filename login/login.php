@@ -10,6 +10,7 @@ if(isset($_POST['btn-login'])){
   
   $password = md5($user_password);
   
+  // realiza o login do usuário, e verifica se ele é admin ou usário comum
   try{ 
     $stmt = $con->prepare("SELECT * FROM usuario WHERE  email = :email");
     $stmt->bindParam(':email', $user_email);
@@ -23,7 +24,8 @@ if(isset($_POST['btn-login'])){
       else{
         echo "ok"; // log in
       }
-    $_SESSION['user_session'] = $row['nome'];
+    // salva o CPF do usuário logado
+    $_SESSION['user_session'] = $row['CPF'];
     }
 
 

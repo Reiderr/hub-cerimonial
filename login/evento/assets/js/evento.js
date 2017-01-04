@@ -42,7 +42,7 @@ $('document').ready(function()
    $.ajax({
     
    type : 'POST',
-   url  : 'saveEvento.php',
+   url  : 'assets/backend/saveEvento.php',
    data : data,
    beforeSend: function()
    { 

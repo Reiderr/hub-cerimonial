@@ -1,7 +1,7 @@
 <?php
 
 include 'dbconfig.php';
-
+// realiza o cadastro do usuário, ainda precisa ser vinculado à um javascript
 	$con = connectDB();
 
 	$admin = 0;

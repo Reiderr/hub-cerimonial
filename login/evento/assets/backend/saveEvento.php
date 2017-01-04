@@ -1,8 +1,14 @@
 <?php
 if(isset($_POST['criarEvento'])){
+  //iniciar sessão
   session_start();
-  include '../dbconfig.php';
+  $user = $_SESSION['user_session'];
+
+ //conexão com o banco de dados
+  include 'dbconfig.php';
   $con = connectDB();
+  //recuepera o email do usuário logado para vincular ao evento
+  $user_logado = getEmailSessao($user);
 
 
   $nome_evento = trim($_POST['nomeEvento']);
@@ -13,8 +19,9 @@ if(isset($_POST['criarEvento'])){
   $latitude = trim($_POST['latitude']);
   $longitude = trim($_POST['longitude']);
  
-  $stmt = $con->prepare("INSERT INTO evento (nomeEvento, local, listaPresente, convidados, url, local_Latitude, local_Longitude) 
-    VALUES (:nome_evento, :endereco, :presentes, :numero_convidados, :URL, :latitude, :longitude )");
+ //query para criação do evento
+  $stmt = $con->prepare("INSERT INTO evento (nomeEvento, local, listaPresente, convidados, url, user_Email, local_Latitude, local_Longitude) 
+    VALUES (:nome_evento, :endereco, :presentes, :numero_convidados, :URL, :email_logado, :latitude, :longitude )");
   
   $stmt-> bindParam(':nome_evento', $nome_evento);
   $stmt-> bindParam(':endereco', $endereco);
@@ -23,6 +30,7 @@ if(isset($_POST['criarEvento'])){
   $stmt-> bindParam(':URL', $URL);
   $stmt-> bindParam(':latitude', $latitude);
   $stmt-> bindParam(':longitude', $longitude);
+  $stmt-> bindParam(':email_logado', $user_logado);
 
  if (!$stmt->execute()) {
       echo "DB Error, could not query the database\n";

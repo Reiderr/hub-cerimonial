@@ -1,6 +1,14 @@
 <!doctype html>
 <html lang="en">
 <head>
+    <?php
+        // recupera o nome do usuário logado na sessão, aqui também será criada a verificação de login para
+        // acesso posteriormente
+        include '../dbconfig.php';
+        session_start();
+        $user = $_SESSION['user_session'];
+    ?>
+
 	<meta charset="utf-8" />
 	<link rel="icon" type="image/png" href="assets/img/favicon.ico">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -47,9 +55,9 @@
             <div class="logo">
                 <a href="dashboard.php" class="simple-text">
                     <?php
-                     session_start();
-                     $user = $_SESSION['user_session'];
-                     echo 'Bem Vindo, ', $user;
+                        // imprime o nome do usuário logado na sidebar
+                        $user_logado = getNomeSessao($user);
+                        echo 'Bem Vindo, ', $user_logado;
                      ?>
                 </a>
             </div>
