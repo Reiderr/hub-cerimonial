@@ -18,10 +18,11 @@ if(isset($_POST['criarEvento'])){
   $presentes = trim($_POST['presentes']);
   $latitude = trim($_POST['latitude']);
   $longitude = trim($_POST['longitude']);
+  $layout = '1';//alterar para entrada dinâmica antes da produção, incluir um formulário para escolha do layout!
  
  //query para criação do evento
-  $stmt = $con->prepare("INSERT INTO evento (nomeEvento, local, listaPresente, convidados, url, user_Email, local_Latitude, local_Longitude) 
-    VALUES (:nome_evento, :endereco, :presentes, :numero_convidados, :URL, :email_logado, :latitude, :longitude )");
+  $stmt = $con->prepare("INSERT INTO evento (nomeEvento, local, listaPresente, convidados, url, user_Email, local_Latitude, local_Longitude, layout) 
+    VALUES (:nome_evento, :endereco, :presentes, :numero_convidados, :URL, :email_logado, :latitude, :longitude, :layout )");
   
   $stmt-> bindParam(':nome_evento', $nome_evento);
   $stmt-> bindParam(':endereco', $endereco);
@@ -31,6 +32,7 @@ if(isset($_POST['criarEvento'])){
   $stmt-> bindParam(':latitude', $latitude);
   $stmt-> bindParam(':longitude', $longitude);
   $stmt-> bindParam(':email_logado', $user_logado);
+  $stmt-> bindParam(':layout', $layout);
 
  if (!$stmt->execute()) {
       echo "DB Error, could not query the database\n";

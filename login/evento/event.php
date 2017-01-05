@@ -5,17 +5,6 @@
 	$id = ($_REQUEST['nome']);
 	$evento = new Evento($id);
 
-
-	//exemplos de retorno, os métodos realizam um echo com os respectivos dados, podemos atualizar para um return caso seja necessário!
-	$evento->getNome();
-	$evento->getId();
-	$evento->getLocal();
-	$evento->getListaPresente();
-	$evento->getConvidados();
-	$evento->getUserEmail();
-	$evento->getLatitude();
-	$evento->getLongitude();
-
 	// classe para recuperação dos dados do evento, utilizado para carregar a página do evento
 	class Evento {
 
@@ -28,6 +17,7 @@
 		private $user_email;
 		private $evento_latitude;
 		private $evento_longitude;
+		private $evento_layout;
 
 		//declaração de métodos
 		public function __construct($id){
@@ -54,6 +44,7 @@
 				$this->user_email = $row['user_Email'];
 				$this->evento_latitude = $row['local_Latitude'];
 				$this->evento_longitude = $row['local_Longitude'];
+				$this->evento_layout = $row['layout'];
 			}
 		}
 		//métodos gets
@@ -87,6 +78,10 @@
 
 		public function getLongitude(){
 			echo $this->evento_longitude;
+		}
+
+		public function getLayout(){
+			return $this->evento_layout;
 		}
 
 	}
