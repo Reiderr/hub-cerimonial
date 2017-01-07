@@ -32,7 +32,7 @@
 
 			//caso o endereço seja inválido siginifica que a página não existe, erro 404!
 			if($stmt->rowCount() == 0){
-				header("Location: ../login/404.html");
+				header("Location: ../evento/404.html");
 			}
 			// inicializa as variaveis do objeto com os valores buscando do bd
 			foreach ($stmt as $row) {
