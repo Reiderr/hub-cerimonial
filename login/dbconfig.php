@@ -5,6 +5,8 @@
 	    echo 'Could not connect to mysql';
 	    exit;
 	}
+	$link->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+	$link->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	return $link;
 }
 

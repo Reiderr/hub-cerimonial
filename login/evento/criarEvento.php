@@ -162,8 +162,8 @@
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">Numero de Convidados</label>
-                                                <input type="text" name='numeroConvidados' class="form-control" placeholder="Numero de convidados">
+                                                <label for="exampleInputEmail1">Data do evento</label>
+                                                <input type="date" name='dataEvento' class="form-control">
                                             </div>
                                         </div>
                                     </div>
@@ -177,18 +177,8 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Url do evento</label>
+                                                <label>Endereço da página do evento (URL)</label>
                                                 <input type="text" name = "URL" class="form-control" placeholder="este será o endereço do seu site: Ex meu_site = tbd.com/evento/meu_site">
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>Listas de Presentes</label>
-                                                <textarea rows="5" name = "presentes" class="form-control" placeholder="Links para as listas de presente online(Casas Bahia, Ricado eletro...)"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -218,6 +208,14 @@
                                     <!-- Gambiarra!!! Cria um campo invizivel e o preenche com as coordenadas, daqui é possivel pegar os valores e enviar para o PHP  -->
                                     <input name = "latitude" class = "col-md-8" type="text" id="map-output" value="" style="visibility:hidden"></input>
                                     <input name = "longitude" class = "col-md-8" type="text" id="map-output2" value="" style="visibility:hidden"></input>
+
+                                    <!-- recebe o tipo de evento e grava no banco, campo oculto! (verifica se o input n foi alterado, para segurança) -->
+                                    <input name = "tipo" type="text" id="tipo" value= <?php 
+                                    if (!isset($_REQUEST['tipo'])) 
+                                        {echo "erro!";}  
+                                    else
+                                        {$tipo = $_REQUEST['tipo']; echo "$tipo";} 
+                                    ?> style= "visibility:hidden"  ></input>
 
                                     <!-- exibe mensagem de erro ou sucesso #trabalhar esses outputs no javascript conforme desenvolvimento -->
                                     <div id = "success"></div>

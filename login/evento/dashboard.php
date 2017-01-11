@@ -70,7 +70,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="criarEvento.php">  
+                    <a href="criarEvento.php?tipo=casamento">  
                         <i class="pe-7s-pen"></i>
                         <p>Criar Evento</p>
                     </a>

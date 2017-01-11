@@ -4,35 +4,35 @@ if(isset($_POST['criarEvento'])){
   session_start();
   $user = $_SESSION['user_session'];
 
+
  //conexão com o banco de dados
   include 'dbconfig.php';
   $con = connectDB();
   //recuepera o email do usuário logado para vincular ao evento
   $user_logado = getEmailSessao($user);
 
-
+  $tipo_evento = ($_POST['tipo']);
   $nome_evento = trim($_POST['nomeEvento']);
-  $numero_convidados = trim($_POST['numeroConvidados']);
   $endereco = trim($_POST['endereco']);
   $URL = trim($_POST['URL']);
-  $presentes = trim($_POST['presentes']);
+  $dataEvento = trim($_POST['dataEvento']);
   $latitude = trim($_POST['latitude']);
   $longitude = trim($_POST['longitude']);
   $layout = '1';//alterar para entrada dinâmica antes da produção, incluir um formulário para escolha do layout!
  
  //query para criação do evento
-  $stmt = $con->prepare("INSERT INTO evento (nomeEvento, local, listaPresente, convidados, url, user_Email, local_Latitude, local_Longitude, layout) 
-    VALUES (:nome_evento, :endereco, :presentes, :numero_convidados, :URL, :email_logado, :latitude, :longitude, :layout )");
+  $stmt = $con->prepare("INSERT INTO evento (nomeEvento, local, url, user_Email, local_Latitude, local_Longitude, layout, data_evento, tipo_evento) 
+    VALUES (:nome_evento, :endereco, :URL, :email_logado, :latitude, :longitude, :layout, :dataEvento, :tipoEvento)");
   
   $stmt-> bindParam(':nome_evento', $nome_evento);
   $stmt-> bindParam(':endereco', $endereco);
-  $stmt-> bindParam(':presentes', $presentes);
-  $stmt-> bindParam(':numero_convidados', $numero_convidados);
   $stmt-> bindParam(':URL', $URL);
+  $stmt-> bindParam(':dataEvento', $dataEvento);
   $stmt-> bindParam(':latitude', $latitude);
   $stmt-> bindParam(':longitude', $longitude);
   $stmt-> bindParam(':email_logado', $user_logado);
   $stmt-> bindParam(':layout', $layout);
+  $stmt-> bindParam(':tipoEvento', $tipo_evento);
 
  if (!$stmt->execute()) {
       echo "DB Error, could not query the database\n";

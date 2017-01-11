@@ -12,12 +12,11 @@
 		private $evento_nome;
 		private $evento_id;
 		private $evento_local;
-		private $evento_listaPresente;
-		private $evento_convidados;
 		private $user_email;
 		private $evento_latitude;
 		private $evento_longitude;
 		private $evento_layout;
+		private $event_data
 
 		//declaração de métodos
 		public function __construct($id){
@@ -39,8 +38,7 @@
 				$this->evento_nome = $row['nomeEvento'];
 				$this->evento_id = $row['idEvento'];
 				$this->evento_local = $row['local'];
-				$this->evento_listaPresente = $row['listaPresente'];
-				$this->evento_convidados = $row['convidados'];
+				$this->evento_data = $row['dataEvento'];
 				$this->user_email = $row['user_Email'];
 				$this->evento_latitude = $row['local_Latitude'];
 				$this->evento_longitude = $row['local_Longitude'];
@@ -49,35 +47,33 @@
 		}
 		//métodos gets
 		public function getNome(){
-			echo $this->evento_nome;
+			return $this->evento_nome;
 		}
 
 		public function getId(){
-			echo $this->evento_id;
+			// este id será utilizado para linkar a tabela de mensagens(textos do evento) com a tabela do evento,
+			// assim como a tabela de imagens que também será linkada por aqui
+			return $this->evento_id;
 		}
 
 		public function getLocal(){
-			echo $this->evento_local;
+			return $this->evento_local;
 		}
 
 		public function getListaPresente(){
-			echo $this->evento_listaPresente;
-		}
-
-		public function getConvidados(){
-			echo $this->evento_convidados;
+			return $this->evento_data;
 		}
 
 		public function getUserEmail(){
-			echo $this->user_email;
+			return $this->user_email;
 		}
 
 		public function getLatitude(){
-			echo $this->evento_latitude;
+			return $this->evento_latitude;
 		}
 
 		public function getLongitude(){
-			echo $this->evento_longitude;
+			return $this->evento_longitude;
 		}
 
 		public function getLayout(){
