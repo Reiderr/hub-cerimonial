@@ -35,12 +35,13 @@ if(isset($_POST['criarEvento'])){
   $stmt-> bindParam(':tipoEvento', $tipo_evento);
 
  if (!$stmt->execute()) {
-      echo "DB Error, could not query the database\n";
-      echo 'MySQL Error: ' . mysql_error();
+      //echo "DB Error, could not query the database\n";
+      //echo 'MySQL Error: ' . mysql_error();
+      echo "erro!";
       exit;
   }
       else{
-        echo "ok"; // log in
+        echo $URL; // log in
       }
 }
 

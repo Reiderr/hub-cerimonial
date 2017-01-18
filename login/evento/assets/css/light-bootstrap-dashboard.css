@@ -3391,3 +3391,14 @@ body > .navbar-collapse[data-color="purple"]:after {
     -webkit-overflow-scrolling: touch;
   }
 }
+
+.modal-dialog {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+}
+
+.modal-content {
+  height: 100%;
+  border-radius: 0;
+}

@@ -52,13 +52,14 @@ $('document').ready(function()
    success :  function(response)
       {      
       alert(response);
-     if(response=="ok"){
+     if(response!="erro!"){
          
       $("#success").fadeIn(1, function(){      
-        $("#success").html('<div class="alert alert-success"> <h3> Evento Criado com Sucesso, redirecionando para sua Dashboard</h3></div>');
+        $("#success").html('<div class="alert alert-success"> <h3> Evento Criado com Sucesso, agora vamos customiza-lo</h3></div>');
         $("#criarEvento").html('salvo! ');
       });
-      setTimeout(' window.location.href = "dashboard.php"; ',5000);
+      // utilizar json para retornar os valores de url evento e tipo de evento para separar as páginas de customização
+      setTimeout(' window.location.href = "customEvento.php?url='+response+'";',5000);
 
     }
      else{

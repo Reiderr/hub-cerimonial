@@ -3,7 +3,7 @@
 	// carrega apenas o 'joaoemaria', dai é possivel carregar a página baseada nessa entrada do banco de dados
 
 	// arquivo responsável por selecionar o layout em que a página do cliente será exibida
-	include 'event.php';
+	include 'assets/backend/event.php';
 
 	$id = ($_REQUEST['nome']);
 	$layout = new Evento($id);
@@ -11,7 +11,7 @@
 
 	// redireciona os dados do evento para o layout escolhido pelo cliente!
 	// para isso basta adicionar os layouts na pasta com o nome layout1, layout2...
-	header("Location: ../evento/layout$tipo_layout.php?nome=$id");
+	header("Location: ../evento/assets/layouts/layout$tipo_layout.php?nome=$id");
 
 
 

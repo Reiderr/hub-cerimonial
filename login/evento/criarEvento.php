@@ -212,7 +212,7 @@
                                     <!-- recebe o tipo de evento e grava no banco, campo oculto! (verifica se o input n foi alterado, para segurança) -->
                                     <input name = "tipo" type="text" id="tipo" value= <?php 
                                     if (!isset($_REQUEST['tipo'])) 
-                                        {echo "erro!";}  
+                                        {echo "erro!";}  // verificar se a url de entrada não foi alterada, caso esse isso resulte em erro, retornar para página de criação
                                     else
                                         {$tipo = $_REQUEST['tipo']; echo "$tipo";} 
                                     ?> style= "visibility:hidden"  ></input>
