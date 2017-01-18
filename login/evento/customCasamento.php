@@ -4,7 +4,7 @@
     <?php
         // recupera o nome do usuário logado na sessão, aqui também será criada a verificação de login para
         // acesso posteriormente
-        include 'assets/backend/event.php';
+        include_once 'assets/backend/event.php';
         session_start();
         $user = $_SESSION['user_session'];
         ob_start();
@@ -151,10 +151,10 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">Customizar Evento</h4>
+                                <h4 class="title">Customizar Casamento</h4>
                             </div>
                             <div class="content">
-                                <form method="POST" id="custom-festa" name = "custom-festa">
+                                <form method="POST" id="custom-casamento" name = "custom-casamento">
                                     <div id = "success"></div>
                                     <div id = "error"></div>
                                     <div class = "row">
@@ -203,16 +203,10 @@
                                     </div>
 
                                     <div class="row">
-                                            <div class="col-md-6">
+                                            <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label>evento no facebook</label>
-                                                    <input type="text" id="eventFacebook" name = "eventFacebook" class="form-control" placeholder="link do evento no facebook">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label>Fanpage no facebook</label>
-                                                    <input type="text" id="fanpageFacebook" name = "fanpageFacebook" class="form-control" placeholder="link da fanpage do evento no facebook">
+                                                    <label>Lista de presentes</label>
+                                                    <input type="text" id="listaPresentes" name = "listaPresentes" class="form-control" placeholder="link para sua lista de presentes virtual">
                                                 </div>
                                             </div>
                                     </div>
@@ -230,7 +224,7 @@
                                     </div>
 
                                     <div class ="row">
-                                        <button name = "salvarDados" id ="salvarDados" class="btn btn-info btn-fill pull-right">Salvar Dados</button>
+                                        <button name = "salvarCasamento" id ="salvarCasamento" class="btn btn-info btn-fill pull-right">Salvar Dados</button>
                                         <div class ="clearfix"></div>
                                     </div>
                                 </form>
@@ -275,7 +269,7 @@
     <!--  Scripts de validação -->
 
     <script src="jquery-validation-1.11.1/jquery.validate.js"></script>
-    <script src="assets/js/festa.js"></script>
+    <script src="assets/js/casamento.js"></script>
 
     <!--  Notifications Plugin    -->
     <script src="assets/js/bootstrap-notify.js"></script>

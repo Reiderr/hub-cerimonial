@@ -7,10 +7,6 @@ $('document').ready(function()
    nomeEvento: {
     required: true,
    },
-   numeroConvidados: {
-    required: true,
-    number: true,
-   },
    endereco: {
     required: true,
    },
@@ -49,20 +45,33 @@ $('document').ready(function()
     $("#error").fadeOut();
     $("#criarEvento").html('Enviando ...');
    },
-   success :  function(response)
-      {      
-      alert(response);
-     if(response!="erro!"){
-         
-      $("#success").fadeIn(1, function(){      
-        $("#success").html('<div class="alert alert-success"> <h3> Evento Criado com Sucesso, agora vamos customiza-lo</h3></div>');
-        $("#criarEvento").html('salvo! ');
-      });
-      // utilizar json para retornar os valores de url evento e tipo de evento para separar as páginas de customização
-      setTimeout(' window.location.href = "customEvento.php?url='+response+'";',5000);
+   success :  function(output)
+      {
+      var IS_JSON = true;      
+      try{// verifica se o retorno é o arquivo json
+        var response = $.parseJSON(output);
+      }
+      catch(err){
+        IS_JSON = false;
+      }
+     if ( IS_JSON == true){
+       if(response[2]=='success'){// recebe o tipo de evento e a url para redirecionamento
+           
+        $("#success").fadeIn(1, function(){      
+          $("#success").html('<div class="alert alert-success"> <h3> Evento Criado com Sucesso, agora vamos customiza-lo</h3></div>');
+          $("#criarEvento").html('salvo! ');
+        });
+        // utilizar json para retornar os valores de url evento e tipo de evento para separar as páginas de customização
+        if(response[0] == 'festa'){// caso seja festa, enviar para customização de festa
+          setTimeout(' window.location.href = "customEvento.php?url='+response[1]+'";',5000);
+        }
+        if(response[0] == 'casamento'){// caso seja casamento, enviar para customização de casamento
+          setTimeout(' window.location.href = "customCasamento.php?url='+response[1]+'";',5000);
+        }
 
+      }
     }
-     else{
+     if (IS_JSON == false){
       $("#error").fadeIn(1, function(){      
         $("#error").html('<div class="alert alert-success"> <h3> URL do evento está em uso, por favor tente outra!</h3></div>');
         $("#error").fadeOut(5000);
@@ -73,5 +82,4 @@ $('document').ready(function()
    });
     return false;
   }
-    /* login submit */
 });

@@ -1,7 +1,7 @@
 <?php
 // exemplo de como puxar o link para o php e carregar páginas dinamicamente... exemplo de link : eventos.php?nome=joaoemaria
 // carrega apenas o 'joaoemaria', dai é possivel carregar a página baseada nessa entrada do banco de dados
-	include 'dbconfig.php';
+	include_once ('dbconfig.php');
 	// classe para recuperação dos dados do evento, utilizado para carregar a página do evento
 	class Evento {
 
@@ -14,9 +14,21 @@
 		private $evento_longitude;
 		private $evento_layout;
 		private $evento_data;
+		private $tipo_evento;
 
 		//declaração de métodos
-		public function __construct($id){
+		public function __construct(){
+				$this->evento_nome = NULL;
+				$this->evento_id = NULL;
+				$this->evento_local = NULL;
+				$this->evento_data = NULL;
+				$this->user_email = NULL;
+				$this->evento_latitude = NULL;
+				$this->evento_longitude = NULL;
+				$this->evento_layout = NULL;
+				$this->tipo_evento = NULL;
+		}
+		public function initEvento($id){
 			//conexão e request
 			$con = connectDB();
 
@@ -40,8 +52,10 @@
 				$this->evento_latitude = $row['local_Latitude'];
 				$this->evento_longitude = $row['local_Longitude'];
 				$this->evento_layout = $row['layout'];
+				$this->tipo_evento = $row['tipo_evento'];
 			}
 		}
+
 		//métodos gets
 		public function getNome(){
 			return $this->evento_nome;
@@ -76,6 +90,11 @@
 		public function getLayout(){
 			return $this->evento_layout;
 		}
+
+		public function getTipoEvento(){
+			return $this->tipo_evento;
+		}
+
 
 	}
 

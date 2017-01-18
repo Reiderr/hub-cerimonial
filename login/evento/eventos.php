@@ -6,7 +6,8 @@
 	include 'assets/backend/event.php';
 
 	$id = ($_REQUEST['nome']);
-	$layout = new Evento($id);
+	$layout = new Evento();
+	$layout->initEvento($id);
 	$tipo_layout = $layout->getLayout();
 
 	// redireciona os dados do evento para o layout escolhido pelo cliente!

@@ -2,7 +2,8 @@
 	//será a página do evento em si, redirecionada a partir do eventos.php
 	include '../backend/event.php';
 	$id = ($_REQUEST['nome']);
-	$evento = new Evento($id);
+	$evento = new Evento();
+	$evento->initEvento($id);
 
 
 	//exemplos de retorno, os métodos realizam um return com os respectivos dados.
@@ -12,5 +13,7 @@
 	echo($evento->getUserEmail());
 	echo($evento->getLatitude());
 	echo($evento->getLongitude());
+	echo($evento->getTipoEvento());
+	echo($evento->getDataEvento());
 
 ?>

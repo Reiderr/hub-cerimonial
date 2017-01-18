@@ -149,83 +149,12 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">Criar Evento</h4>
+                                <h4 class="title">Selecione o tipo do evento a ser criado</h4>
                             </div>
                             <div class="content">
-                                <form method="POST" id="cadastroEvento" name = "cadastroEvento">
-                                    <div class="row">
-                                        <div class="col-md-8">
-                                            <div class="form-group">
-                                                <label>Nome do Evento</label>
-                                                <input type="text" name='nomeEvento' class="form-control" placeholder="Nome do Evento" >
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail1">Data do evento</label>
-                                                <input type="date" required name='dataEvento' class="form-control">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>Endereço do Evento</label>
-                                                <input type="text" name = "endereco" class="form-control" placeholder="endereço">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>Endereço da página do evento (URL)</label>
-                                                <input type="text" name = "URL" class="form-control" placeholder="este será o endereço do seu site: Ex meu_site = tbd.com/evento/meu_site">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <style>
-                                    #map-canvas {height: 400px}
-                                    </style>
-                                    <label>Escolha no mapa o local do seu evento! Arraste o marcador para indicar o local exato.</label>
-                                    <div class = "row">
-                                        <div class ="col-md-4">
-                                            <div class ="form-group">
-                                                <input id="search-txt" type="text" class="form-control" placeholder="Digite o Local do evento">
-                                            </div>
-                                        </div>
-                                        <div class ="col-md-1">
-                                            <div class ="form-group">
-                                                <input id="search-btn" type="button" class = "btn btn-info btn-fill " value="Buscar">
-                                            </div>
-                                        </div>
-                                        <div class ="col-md-6">
-                                            <div class ="form-group">
-                                                <input id="detect-btn" type="button" class = "btn btn-info btn-fill pull-left" value="Detectar minha localização">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class ="col-md-8" id="map-canvas"></div>
-                                    <!-- Gambiarra!!! Cria um campo invizivel e o preenche com as coordenadas, daqui é possivel pegar os valores e enviar para o PHP  -->
-                                    <input name = "latitude" class = "col-md-8" type="text" id="map-output" value="" style="visibility:hidden"></input>
-                                    <input name = "longitude" class = "col-md-8" type="text" id="map-output2" value="" style="visibility:hidden"></input>
-
-                                    <!-- recebe o tipo de evento e grava no banco, campo oculto! (verifica se o input n foi alterado, para segurança) -->
-                                    <input name = "tipo" type="text" id="tipo" value= <?php 
-                                    if (!isset($_REQUEST['tipo'])) 
-                                        {echo "erro!";}  // verificar se a url de entrada não foi alterada, caso esse isso resulte em erro, retornar para página de criação
-                                    else
-                                        {$tipo = $_REQUEST['tipo']; echo "$tipo";} 
-                                    ?> style= "visibility:hidden"  ></input>
-
-                                    <!-- exibe mensagem de erro ou sucesso #trabalhar esses outputs no javascript conforme desenvolvimento -->
-                                    <div id = "success"></div>
-                                    <div id = "error"></div>
-
-                                    <div class ="row">
-                                        <button name = "criarEvento" id ="criarEvento" class="btn btn-success btn-fill pull-right">Criar Evento</button>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </form>
+                                <button onclick="window.location.href='criarEvento.php?tipo=casamento'" class ="btn btn-primary">Casamento</button>
+                                <button onclick="window.location.href='criarEvento.php?tipo=festa'" class ="btn btn-primary">Festa</button>
+                               <!-- conteudo da página aqui -->
                             </div>
                         </div>
                     </div>
