@@ -9,10 +9,11 @@
 	$layout = new Evento();
 	$layout->initEvento($id);
 	$tipo_layout = $layout->getLayout();
+	$tipo_evento = $layout->getTipoEvento();
 
 	// redireciona os dados do evento para o layout escolhido pelo cliente!
-	// para isso basta adicionar os layouts na pasta com o nome layout1, layout2...
-	header("Location: ../evento/assets/layouts/layout$tipo_layout.php?nome=$id");
+
+	header("Location: ../evento/assets/layouts/layout$tipo_layout/layout$tipo_layout$tipo_evento.php?nome=$id");
 
 
 

@@ -23,15 +23,26 @@ class Casamento extends Evento{
 	public function initCasamento($url){
 		parent::initEvento($url);
 		$con = connectDB();
+		$stmt = $con->prepare('SELECT * FROM dados_casamento WHERE evento_ID=:id');
+		$stmt-> bindParam(':id', parent::getId());
+		$stmt-> execute();
+
+		foreach ($stmt as $row){
+			$this->texto1 = $row['texto_1'];
+			$this->texto2 = $row['texto_2'];
+			$this->img1 = $row['imagem_1'];
+			$this->img2 = $row['imagem_2'];
+			$this->lista_presentes = $row['lista_presentes'];
+		}
+	}
+
+	public function saveCasamento($url){
+		parent::initEvento($url);
+		$con = connectDB();
 		$stmt = $con->prepare('INSERT INTO dados_casamento (evento_ID) VALUES (:id_evento)');
 		$stmt -> bindParam(':id_evento', parent::getId());
 		$stmt -> execute();
 
-		$this->texto1 = NULL;
-		$this->texto2 = NULL;
-		$this->img1 = NULL;
-		$this->img2 = NULL;
-		$this->lista_presentes = NULL;
 	}
 
 	public function initCasamentoID($id){
@@ -60,13 +71,10 @@ class Casamento extends Evento{
 		return $this->img2;
 	}
 
-	public function getEventoFace(){
-		return $this->evento_face;
+	public function getListaPresente(){
+		return $this->lista_presentes;
 	}
 
-	public function getFanpage(){
-		return $this->fanpage_face;
-	}
 
 	public function setTexto1($text){
 		$this->texto1 = $text;

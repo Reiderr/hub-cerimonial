@@ -237,6 +237,9 @@
 
 
 </body>
+<footer>
+    alpha build 1.0
+</footer>
 
     <!--   Core JS Files   -->
     <script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>

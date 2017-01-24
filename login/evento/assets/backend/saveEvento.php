@@ -44,11 +44,11 @@ if(isset($_POST['criarEvento'])){
       else{
         if($tipo_evento == 'festa'){// verifica qual o tipo do evento para saber qual das tabelas preencher
             $festa = new Festa();// no momento em que o evento é criado, também cria uma entrada para festa
-            $festa->initFesta($URL);// assim é possivel apenas dar um UPDATE para atualizar os dados, podendo usar a mesma tela para edição
+            $festa->saveFesta($URL);// assim é possivel apenas dar um UPDATE para atualizar os dados, podendo usar a mesma tela para edição
         }
         if($tipo_evento == 'casamento'){
             $casamento = new Casamento();// no momento em que o evento é criado, também cria uma entrada para festa
-            $casamento->initCasamento($URL);// assim é possivel apenas dar um UPDATE para atualizar os dados, podendo usar a mesma tela para edição
+            $casamento->saveCasamento($URL);// assim é possivel apenas dar um UPDATE para atualizar os dados, podendo usar a mesma tela para edição
         }
         echo json_encode(array($tipo_evento,$URL, 'success')); // retorna o tipo do evento e a url para customização
       }

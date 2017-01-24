@@ -22,17 +22,29 @@ class Festa extends Evento{
 	public function initFesta($url){
 		parent::initEvento($url);
 		$con = connectDB();
+		$stmt = $con->prepare('SELECT * FROM dados_evento WHERE evento_ID=:id');
+		$stmt-> bindParam(':id', parent::getId());
+		$stmt-> execute();
+
+		foreach ($stmt as $row){
+			$this->texto1 = $row['texto_1'];
+			$this->texto2 = $row['texto_2'];
+			$this->img1 = $row['imagem_1'];
+			$this->img2 = $row['imagem_2'];
+			$this->evento_face = $row['evento_facebook'];
+			$this->fanpage_face = $row['fanpage_facebook'];
+		}
+	}
+
+	public function saveFesta($url){
+		parent::initEvento($url);
+		$con = connectDB();
 		$stmt = $con->prepare('INSERT INTO dados_evento (evento_ID) VALUES (:id_evento)');
 		$stmt -> bindParam(':id_evento', parent::getId());
 		$stmt -> execute();
 
-		$this->texto1 = NULL;
-		$this->texto2 = NULL;
-		$this->img1 = NULL;
-		$this->img2 = NULL;
-		$this->evento_face = NULL;
-		$this->fanpage_face = NULL;
 	}
+
 
 	public function initFestaID($id){
 		$con = connectDB();
