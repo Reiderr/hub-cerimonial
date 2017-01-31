@@ -95,6 +95,41 @@
 			return $this->tipo_evento;
 		}
 
+		public function setLatitude($latitude){
+			$con = connectDB();
+			$stmt = $con->prepare("UPDATE evento SET local_Latitude = :latitude WHERE idEvento = :eventoID");
+			$stmt->bindParam(':latitude', $latitude);
+			$stmt->bindParam(':eventoID', $this->evento_id);
+			$stmt->execute();
+		}
+
+		public function setLongitude($longitude){
+			$con = connectDB();
+			$stmt = $con->prepare("UPDATE evento SET local_Longitude= :longitude WHERE idEvento = :eventoID");
+			$stmt->bindParam(':longitude', $longitude);
+			$stmt->bindParam(':eventoID', $this->evento_id);
+			$stmt->execute();
+
+		}
+
+		public function setLayout($layout){
+			$con = connectDB();
+			$stmt = $con->prepare("UPDATE evento SET layout= :layout WHERE idEvento = :eventoID");
+			$stmt->bindParam(':layout', $layout);
+			$stmt->bindParam(':eventoID', $this->evento_id);
+			$stmt->execute();
+
+		}
+
+		public function setLocal($local){
+			$con = connectDB();
+			$stmt = $con->prepare("UPDATE evento SET local= :local WHERE idEvento = :eventoID");
+			$stmt->bindParam(':local', $local);
+			$stmt->bindParam(':eventoID', $this->evento_id);
+			$stmt->execute();
+
+		}
+
 
 	}
 

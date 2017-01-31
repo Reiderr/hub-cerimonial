@@ -78,7 +78,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="table.html">
+                    <a href="meusEventos.php">
                         <i class="pe-7s-note2"></i>
                         <p>Meus Eventos</p>
                     </a>
@@ -186,6 +186,13 @@
                                                 <input type="button" class="btn btn-info btn-fill" data-toggle="modal" data-target="#myModal" value="ver template"></input>
                                             </div>
                                         </div>
+
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <label>Endereço do Evento</label>
+                                                <input type="text" name = "endereco" class="form-control" placeholder="endereço">
+                                            </div>
+                                        </div>
                                     </div>
 
                                     <div class ="row">
@@ -222,6 +229,32 @@
                                             <input type="file" name = "imagem2" id = "imagem2" class ="upload"></input>
                                         </div>
                                     </div>
+                                    <style>
+                                    #map-canvas {height: 400px}
+                                    </style>
+                                    <label>Escolha no mapa o local do seu evento! Arraste o marcador para indicar o local exato.</label>
+                                    <div class = "row">
+                                        <div class ="col-md-4">
+                                            <div class ="form-group">
+                                                <input id="search-txt" type="text" class="form-control" placeholder="Digite o Local do evento">
+                                            </div>
+                                        </div>
+                                        <div class ="col-md-1">
+                                            <div class ="form-group">
+                                                <input id="search-btn" type="button" class = "btn btn-info btn-fill " value="Buscar">
+                                            </div>
+                                        </div>
+                                        <div class ="col-md-6">
+                                            <div class ="form-group">
+                                                <input id="detect-btn" type="button" class = "btn btn-info btn-fill pull-left" value="Detectar minha localização">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class ="col-md-8" id="map-canvas"></div>
+                                    <!-- Gambiarra!!! Cria um campo invizivel e o preenche com as coordenadas, daqui é possivel pegar os valores e enviar para o PHP  -->
+                                    <input name = "latitude" class = "col-md-8" type="text" id="map-output" value="" style="visibility:hidden"></input>
+                                    <input name = "longitude" class = "col-md-8" type="text" id="map-output2" value="" style="visibility:hidden"></input>
+
 
                                     <div class ="row">
                                         <button name = "salvarCasamento" id ="salvarCasamento" class="btn btn-info btn-fill pull-right">Salvar Dados</button>
@@ -265,6 +298,12 @@
 
     <!--  Checkbox, Radio & Switch Plugins -->
     <script src="assets/js/bootstrap-checkbox-radio-switch.js"></script>
+
+    <!--  script google maps -->
+    <script src = "assets/js/maps.js"></script>
+    <script src="//maps.googleapis.com/maps/api/js?v=3&amp;sensor=false&amp;key=AIzaSyApzbVcgIb-qVPP3jNbCTB0TmxMmTHK0es&amp;callback=loadmap" defer></script>
+
+
 
     <!--  Scripts de validação -->
 

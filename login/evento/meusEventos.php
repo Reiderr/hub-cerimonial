@@ -4,7 +4,7 @@
     <?php
         // recupera o nome do usuário logado na sessão, aqui também será criada a verificação de login para
         // acesso posteriormente
-        include '../dbconfig.php';
+        include_once '../dbconfig.php';
         session_start();
         $user = $_SESSION['user_session'];
     ?>
@@ -63,7 +63,7 @@
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <li class="active">
+                <li >
                     <a href="tipoEvento.php">  
                         <i class="pe-7s-pen"></i>
                         <p>Criar Evento</p>
@@ -75,7 +75,7 @@
                         <p>Editar Perfil</p>
                     </a>
                 </li>
-                <li>
+                <li class="active">
                     <a href="meusEventos.php">
                         <i class="pe-7s-note2"></i>
                         <p>Meus Eventos</p>
@@ -125,7 +125,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Criar Evento</a>
+                    <a class="navbar-brand" href="#">Meus Eventos</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-left">
@@ -149,12 +149,75 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">Selecione o tipo do evento a ser criado</h4>
+                                <h4 class="title">Gerenciar Meus Eventos</h4>
                             </div>
                             <div class="content">
-                                <button onclick="window.location.href='criarEvento.php?tipo=casamento'" class ="btn btn-primary">Casamento</button>
-                                <button onclick="window.location.href='criarEvento.php?tipo=festa'" class ="btn btn-primary">Festa</button>
                                <!-- conteudo da página aqui -->
+                                <div class="content table-responsive table-full-width">
+                                <table class="table table-hover table-striped">
+                                    <thead>
+                                        <th>ID</th>
+                                        <th>Nome</th>
+                                        <th>Data</th>
+                                        <th>Local</th>
+                                        <th>Gerenciar</th>
+                                    </thead>
+                                    <tbody>
+                                            <?php
+                                            // carrega os eventos criados por um respectivo usuário, permite edição
+                                                $user_email = getEmailSessao($user);    
+                                                $con = connectDB();
+                                                $stmt = $con->prepare("SELECT * FROM evento WHERE user_Email = :user_email");
+                                                $stmt->bindParam(':user_email', $user_email);
+                                                $stmt->execute();
+
+                                                if ($stmt->rowCount() == 0){
+                                                    echo '<tr>';
+                                                    echo "<td> você ainda não possui nenhum evento criado </td>";
+                                                    echo '</tr>';
+                                                }
+
+                                                foreach($stmt as $row){
+                                                    echo '<tr>';
+                                                    echo "<td>".$row['idEvento']."</td>";
+                                                    echo"<td>".$row['nomeEvento']."</td>";
+                                                    echo"<td>".$row['data_evento']."</td>";
+                                                    echo"<td>".$row['local']."</td>";
+                                                    if ($row['tipo_evento'] == "casamento"){
+                                                        echo<<<EOT
+                                                        <td> <button onclick="window.location.href='customCasamento.php?url={$row['url']}'" 
+                                                        class ="btn btn-primary">Editar</button>
+                                                        <button onclick="window.location.href='changeTemplate.php?url={$row['url']}'" 
+                                                        class ="btn btn-warning">Alterar Template</button>
+                                                        <button onclick="window.location.href='eventos.php?nome={$row['url']}'" 
+                                                        class ="btn btn-success btn-fill">Vizualizar</button>
+                                                        <button onclick="window.location.href='assets/backend/deleteEvento.php?url={$row['url']}'" 
+                                                        class ="btn btn-danger btn-fill">delete</button> 
+                                                        </td>
+EOT;
+                                                    }
+                                                    if ($row['tipo_evento'] == "festa"){
+                                                        echo<<<EOT
+                                                        <td> <button onclick="window.location.href='customEvento.php?url={$row['url']}'" 
+                                                        class ="btn btn-primary">Editar</button> 
+                                                        <button onclick="window.location.href='changeTemplate.php?url={$row['url']}'" 
+                                                        class ="btn btn-warning">Alterar Template</button>
+                                                        <button onclick="window.location.href='eventos.php?nome={$row['url']}'" 
+                                                        class ="btn btn-success btn-fill">Vizualizar</button>
+                                                        <button onclick="window.location.href='assets/backend/deleteEvento.php?url={$row['url']}'" 
+                                                        class ="btn btn-danger btn-fill">delete</button> 
+                                                        </td>
+EOT;
+                                                    }
+
+
+                                                    echo '</tr>';
+                                                }
+                                            ?>
+                                    </tbody>
+                                </table>
+
+                            </div>
                             </div>
                         </div>
                     </div>

@@ -14,23 +14,18 @@ if(isset($_POST['criarEvento'])){
 
   $tipo_evento = ($_POST['tipo']);
   $nome_evento = trim($_POST['nomeEvento']);
-  $endereco = trim($_POST['endereco']);
   $URL = trim($_POST['URL']);
   $dataEvento = trim($_POST['dataEvento']);
-  $latitude = trim($_POST['latitude']);
-  $longitude = trim($_POST['longitude']);
+
   $layout = '1';//alterar para entrada dinâmica antes da produção, incluir um formulário para escolha do layout!
 
  //query para criação do evento
-  $stmt = $con->prepare("INSERT INTO evento (nomeEvento, local, url, user_Email, local_Latitude, local_Longitude, layout, data_evento, tipo_evento) 
-    VALUES (:nome_evento, :endereco, :URL, :email_logado, :latitude, :longitude, :layout, :dataEvento, :tipoEvento)");
+  $stmt = $con->prepare("INSERT INTO evento (nomeEvento, url, user_Email, layout, data_evento, tipo_evento) 
+    VALUES (:nome_evento, :URL, :email_logado, :layout, :dataEvento, :tipoEvento)");
   
   $stmt-> bindParam(':nome_evento', $nome_evento);
-  $stmt-> bindParam(':endereco', $endereco);
   $stmt-> bindParam(':URL', $URL);
   $stmt-> bindParam(':dataEvento', $dataEvento);
-  $stmt-> bindParam(':latitude', $latitude);
-  $stmt-> bindParam(':longitude', $longitude);
   $stmt-> bindParam(':email_logado', $user_logado);
   $stmt-> bindParam(':layout', $layout);
   $stmt-> bindParam(':tipoEvento', $tipo_evento);

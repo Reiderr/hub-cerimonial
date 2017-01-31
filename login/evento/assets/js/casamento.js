@@ -46,8 +46,9 @@ $('document').ready(function()
         $("#success").fadeIn(1, function(){      
           $("#success").html('<div class="alert alert-success"> <h3> Tudo Pronto!, agora vamos ver como ficou sua página!!</h3></div>');
           $("#salvarDados").html('salvo! ');
+          document.getElementById("success").scrollIntoView();
         });
-        setTimeout(' window.location.href = "dashboard.php";',5000);// redirecionar para o preview do evento (a fazer) 
+        setTimeout(' window.location.href = "meusEventos.php";',4000);// redirecionar para o preview do evento (a fazer) 
 
       }
        else{

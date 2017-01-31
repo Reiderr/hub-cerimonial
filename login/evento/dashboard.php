@@ -82,9 +82,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="table.html">
+                    <a href="meusEventos.php">
                         <i class="pe-7s-note2"></i>
-                        <p>Table List</p>
+                        <p>Meus Eventos</p>
                     </a>
                 </li>
                 <li>

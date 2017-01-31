@@ -7,9 +7,6 @@ $('document').ready(function()
    nomeEvento: {
     required: true,
    },
-   endereco: {
-    required: true,
-   },
    URL:{
     required: true,
    },
@@ -19,13 +16,9 @@ $('document').ready(function()
             nomeEvento:{
                       required: "Digite o nome para o evento"
                      },
-            numeroConvidados:{
-                      required: "digite o numero de Convidados"
-                     },
             URL:{
                       required: "digite a URL"
                      },
-            endereco: "digite o endereço do evento",
        },
     submitHandler: submitEvento
        });
@@ -63,10 +56,10 @@ $('document').ready(function()
         });
         // utilizar json para retornar os valores de url evento e tipo de evento para separar as páginas de customização
         if(response[0] == 'festa'){// caso seja festa, enviar para customização de festa
-          setTimeout(' window.location.href = "customEvento.php?url='+response[1]+'";',5000);
+          setTimeout(' window.location.href = "customEvento.php?url='+response[1]+'";',3000);
         }
         if(response[0] == 'casamento'){// caso seja casamento, enviar para customização de casamento
-          setTimeout(' window.location.href = "customCasamento.php?url='+response[1]+'";',5000);
+          setTimeout(' window.location.href = "customCasamento.php?url='+response[1]+'";',3000);
         }
 
       }

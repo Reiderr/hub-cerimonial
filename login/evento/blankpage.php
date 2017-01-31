@@ -4,7 +4,7 @@
     <?php
         // recupera o nome do usuário logado na sessão, aqui também será criada a verificação de login para
         // acesso posteriormente
-        include '../dbconfig.php';
+        include_once '../dbconfig.php';
         session_start();
         $user = $_SESSION['user_session'];
     ?>
@@ -64,7 +64,7 @@
                     </a>
                 </li>
                 <li class="active">
-                    <a href="criarEvento.php">  
+                    <a href="tipoEvento.php">  
                         <i class="pe-7s-pen"></i>
                         <p>Criar Evento</p>
                     </a>
@@ -76,7 +76,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="table.html">
+                    <a href="meusEventos.php">
                         <i class="pe-7s-note2"></i>
                         <p>Meus Eventos</p>
                     </a>
