@@ -1,6 +1,25 @@
 <?php
 include "event.php";
 // classe Festa que herda os métodos de evento, assim como a classe Casamento fará
+/*
+Escopo da classe:
+	initFesta(url) - carrega os dados de uma festa a partir de uma url
+	saveFesta(url)- cria a festa
+	initFestaId(ID) - carrega os dados de uma festa a partir de um ID de evento
+	getTexto1() - returna o texto 1
+	getTexto2() - retorna o texto 2
+	getImg1() - retorna a imagem 1
+	getImg2() - retorna a imagem 2
+	getEventoFace() -retorna o evento do facebook
+	getFanpage() - retorna a fanpage
+	setTexto1(texto) - define o texto 1
+	setTexto2(texto) - define o texto 2
+	setImg1(img) - define a imagem 1
+	setImg2(img) - define a imagem 2
+	setEventoFace(link) - define o evento do facebook
+	setFanpage(link) - define a fanpage facebook
+
+*/
 class Festa extends Evento{ 
 	private $texto1;
 	private $texto2;

@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <?php
+        include_once 'assets/backend/functions.php';
+        $user = iniciarSessao();
         // recupera o nome do usuário logado na sessão, aqui também será criada a verificação de login para
         // acesso posteriormente
         include 'assets/backend/event.php';
-        session_start();
-        $user = $_SESSION['user_session'];
         ob_start();
         error_reporting(0);
     ?>
@@ -108,10 +108,7 @@
                     </a>
                 </li>
                 <li class="active-pro">
-                    <a href="upgrade.html">
-                        <i class="pe-7s-rocket"></i>
-                        <p>Upgrade to PRO</p>
-                    </a>
+                    <p><?php getVersion(); ?></p>
                 </li>
             </ul>
         </div>
@@ -135,7 +132,7 @@
 
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a href="#">
+                            <a href="assets/backend/logout.php">
                                 Log out
                             </a>
                         </li>
@@ -169,11 +166,7 @@
                                                 else
                                                     {
                                                         $url = $_REQUEST['url'];
-                                                        $evento = new Evento();
-                                                        $evento->initEvento($url);
-                                                        $user_email = getEmailSessao($user);//recebe email do usuário logado para verificar a integridade do sistema
-                                                        if ($user_email != $evento->getUserEmail()){header( "Location: 444.php" );}//verifica se o usuário logado é dono do evento
-                                                        $evento_id = $evento->getId();
+                                                        $evento_id = verificaDono($user, $url);
                                                         echo "$evento_id";
                                                     } 
                                                 ?>  ></input>

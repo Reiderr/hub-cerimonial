@@ -532,6 +532,27 @@ body > .navbar-collapse[data-color="purple"]:after {
 }
 .btn.btn-icon {
   padding: 8px;
+  font-size: 40px;
+  border-color: #3472F7;
+  color : #3472F7;
+}
+.btn.btn-icon-success {
+  padding: 8px;
+  font-size: 40px;
+  border-color: #87CB16;
+  color : #87CB16;
+}
+.btn.btn-icon-warning {
+  padding: 8px;
+  font-size: 40px;
+  border-color: #FF9500;
+  color : #FF9500;
+}
+.btn.btn-icon-danger {
+  padding: 8px;
+  font-size: 40px;
+  border-color: #FF4A55;
+  color : #FF4A55;
 }
 
 .btn-primary {

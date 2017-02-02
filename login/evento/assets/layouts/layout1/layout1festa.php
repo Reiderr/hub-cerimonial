@@ -2,15 +2,17 @@
 <html>
   <head>
     <?php 
-        include '../../backend/eventCasamento.php';
+        include_once '../../backend/eventFesta.php';
+        include_once '../../backend/functions.php';
         $nome = ($_REQUEST['nome']);
-        $casamento = new Casamento();
-        $casamento->initCasamento($nome);
+        $festa = new Festa();
+        $festa->initFesta($nome);
+        verificaEventoAtivo($nome);// verifica se o evento está ativado, caso não esteja o usuário precisa logar para vizualiza-lo
 
     ?>
     <meta charset="utf-8">
     <!-- carrega o titulo do evento -->
-    <title><?php echo $casamento->getNome(); ?></title>
+    <title><?php echo $festa->getNome(); ?></title>
     <meta name="description" content="This is a free Bootstrap landing page theme created for BootstrapZero. Feature video background and one page design." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="Codeply">
@@ -35,7 +37,7 @@
             <div class="navbar-collapse collapse" id="bs-navbar">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a class="page-scroll" href="#one">O casamento</a>
+                        <a class="page-scroll" href="#one">O festa</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#two">Lista de Presentes</a>
@@ -60,8 +62,8 @@
         <div class="header-content">
             <div class="inner">
                 <!-- mostra o nome do evento e o texto 1 -->
-                <h1 class="cursive"><?php echo $casamento->getNome(); ?></h1>
-                <h4><?php echo $casamento->getTexto1(); ?></h4>
+                <h1 class="cursive"><?php echo $festa->getNome(); ?></h1>
+                <h4><?php echo $festa->getTexto1(); ?></h4>
                 <hr>
                 <a href="#one" class="btn btn-primary btn-xl page-scroll">Conheça mais</a>
             </div>
@@ -75,7 +77,7 @@
                     <br>
                     <p class="text-faded">
                         <!-- mostra o texto 2 na tela -->
-                        <?php echo $casamento->gettexto2();?>
+                        <?php echo $festa->getTexto2();?>
                     </p>
                 </div>
             </div>
@@ -96,7 +98,7 @@
                     <h2> Quer nos presentear com algo? Temos algumas sujestões. </h2>
                     <hr class="primary">
                     <!-- link para a lista de presentes -->
-                    <a class="btn btn-primary btn-xl page-scroll" href=<?php $lista = $casamento->getListaPresente();  echo "$lista"; ?>>Conheça mais</a>
+                    <a class="btn btn-primary btn-xl page-scroll" href=<?php $lista = $festa->getFanpage();  echo "$lista"; ?>>Conheça mais</a>
                 </div>
             </div>
         </div>
@@ -117,7 +119,7 @@
         </div>
         <script>
           function initMap() {
-            var uluru = {lat: <?php echo $casamento->getLatitude(); ?>, lng: <?php echo $casamento->getLongitude();?> };
+            var uluru = {lat: <?php echo $festa->getLatitude(); ?>, lng: <?php echo $festa->getLongitude();?> };
             var map = new google.maps.Map(document.getElementById('map'), {
               zoom: 15,
               center: uluru
@@ -194,8 +196,8 @@
         		    Não perca nada dessa data tão especial!
         		</h5>
         		<p class="text-justify">
-                    O Casamento será realizado no dia <?php echo $casamento->getDataEvento(); ?>,
-                    no Local: <?php echo $casamento->getLocal(); ?>
+                    O festa será realizado no dia <?php echo $festa->getDataEvento(); ?>,
+                    no Local: <?php echo $festa->getLocal(); ?>
         		</p>
         		<button class="btn btn-primary btn-lg center-block" data-dismiss="modal" aria-hidden="true"> entendi! </button>
         	</div>

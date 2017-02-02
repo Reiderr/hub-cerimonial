@@ -4,9 +4,8 @@
     <?php
         // recupera o nome do usuário logado na sessão, aqui também será criada a verificação de login para
         // acesso posteriormente
-        include_once '../dbconfig.php';
-        session_start();
-        $user = $_SESSION['user_session'];
+        include_once 'assets/backend/functions.php';
+        $user = iniciarSessao();
     ?>
 
 	<meta charset="utf-8" />
@@ -105,11 +104,8 @@
                         <p>Notifications</p>
                     </a>
                 </li>
-				<li class="active-pro">
-                    <a href="upgrade.html">
-                        <i class="pe-7s-rocket"></i>
-                        <p>Upgrade to PRO</p>
-                    </a>
+                <li class="active-pro">
+                    <p><?php getVersion(); ?></p>
                 </li>
             </ul>
     	</div>
@@ -133,7 +129,7 @@
 
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a href="#">
+                            <a href="assets/backend/logout.php">
                                 Log out
                             </a>
                         </li>

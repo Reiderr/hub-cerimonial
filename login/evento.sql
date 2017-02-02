@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 11-Jan-2017 às 04:40
+-- Generation Time: 02-Fev-2017 às 17:07
 -- Versão do servidor: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -23,6 +23,51 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `dados_casamento`
+--
+
+CREATE TABLE `dados_casamento` (
+  `evento_ID` int(255) NOT NULL,
+  `texto_2` text NOT NULL,
+  `imagem_1` varchar(255) NOT NULL,
+  `imagem_2` varchar(255) NOT NULL,
+  `texto_1` text NOT NULL,
+  `lista_presentes` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `dados_casamento`
+--
+
+INSERT INTO `dados_casamento` (`evento_ID`, `texto_2`, `imagem_1`, `imagem_2`, `texto_1`, `lista_presentes`) VALUES
+(1, '', '', '', '', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `dados_evento`
+--
+
+CREATE TABLE `dados_evento` (
+  `evento_ID` int(255) NOT NULL,
+  `texto_2` text NOT NULL,
+  `imagem_1` varchar(255) NOT NULL,
+  `imagem_2` varchar(255) NOT NULL,
+  `texto_1` text NOT NULL,
+  `evento_facebook` varchar(255) DEFAULT NULL,
+  `fanpage_facebook` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `dados_evento`
+--
+
+INSERT INTO `dados_evento` (`evento_ID`, `texto_2`, `imagem_1`, `imagem_2`, `texto_1`, `evento_facebook`, `fanpage_facebook`) VALUES
+(2, 'texto padrÃ£o (a fazer)', '', '', 'texto padrÃ£o(a fazer)', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `evento`
 --
 
@@ -35,7 +80,7 @@ CREATE TABLE `evento` (
   `local_Latitude` varchar(25) DEFAULT NULL,
   `local_Longitude` varchar(25) DEFAULT NULL,
   `layout` varchar(255) NOT NULL,
-  `published` tinyint(1) DEFAULT NULL,
+  `published` varchar(30) DEFAULT NULL,
   `data_evento` datetime DEFAULT NULL,
   `tipo_evento` varchar(60) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -45,28 +90,8 @@ CREATE TABLE `evento` (
 --
 
 INSERT INTO `evento` (`idEvento`, `nomeEvento`, `local`, `url`, `user_Email`, `local_Latitude`, `local_Longitude`, `layout`, `published`, `data_evento`, `tipo_evento`) VALUES
-(18, 'Evento de teste 1', 'EndereÃ§o de teste 1', 'teste1', 'marcosreider@hotmail.com', '-19.908174', '-43.960314', '1', NULL, NULL, NULL),
-(19, 'Joao e maria', 'event', 'eventtest1', 'marcosreider@hotmail.com', '-19.911725', '-43.966837', '1', NULL, '1995-07-18 00:00:00', NULL),
-(20, 'teste123', 'evento rua 1', 'eventotest1', 'marcosreider@hotmail.com', '-19.910433', '-44.007177', '1', NULL, '1995-07-18 00:00:00', NULL),
-(21, 'evento teste 1', 'end de testes', 'testeevento1', 'marcosreider@hotmail.com', '-19.902847', '-43.981771', '1', NULL, '1995-07-18 00:00:00', NULL),
-(22, 'eventoteste2', 'teste evento', 'testeevento2', 'marcosreider@hotmail.com', '-19.929477', '-44.078073', '1', NULL, '5222-04-17 00:00:00', NULL),
-(23, 'teste3', 'dasdas', 'gvbcvbxcvb', 'marcosreider@hotmail.com', '-19.895261', '-44.039450', '1', NULL, '0018-12-18 00:00:00', NULL),
-(24, 'evento 1', 'testedoevento 3', 'testeevento3', 'marcosreider@hotmail.com', '-19.909465', '-43.994303', '1', NULL, '5646-05-14 00:00:00', 'casamento'),
-(25, 'teste5', 'teste5', 'teste5', 'marcosreider@hotmail.com', '-19.917858', '-44.030352', '1', NULL, '5555-05-05 00:00:00', 'casamento');
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `mensagens`
---
-
-CREATE TABLE `mensagens` (
-  `evento_ID` int(255) NOT NULL,
-  `texto_2` text NOT NULL,
-  `imagem_1` varchar(255) NOT NULL,
-  `imagem_2` varchar(255) NOT NULL,
-  `texto_1` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+(1, 'teste1', NULL, 'teste1', 'marcosreider@hotmail.com', NULL, NULL, '1', 'admin', '2017-02-04 00:00:00', 'casamento'),
+(2, 'teste2', NULL, 'teste2', 'marcosreider@hotmail.com', '-19.905268', '-44.007177', '1', NULL, '2017-02-02 00:00:00', 'festa');
 
 -- --------------------------------------------------------
 
@@ -110,18 +135,24 @@ INSERT INTO `usuario` (`CPF`, `nome`, `telefone`, `endereco`, `admin`, `senha`, 
 --
 
 --
+-- Indexes for table `dados_casamento`
+--
+ALTER TABLE `dados_casamento`
+  ADD PRIMARY KEY (`evento_ID`);
+
+--
+-- Indexes for table `dados_evento`
+--
+ALTER TABLE `dados_evento`
+  ADD PRIMARY KEY (`evento_ID`);
+
+--
 -- Indexes for table `evento`
 --
 ALTER TABLE `evento`
   ADD PRIMARY KEY (`idEvento`),
   ADD UNIQUE KEY `idEvento_UNIQUE` (`idEvento`),
   ADD UNIQUE KEY `url` (`url`);
-
---
--- Indexes for table `mensagens`
---
-ALTER TABLE `mensagens`
-  ADD PRIMARY KEY (`evento_ID`);
 
 --
 -- Indexes for table `tokens`
@@ -147,16 +178,22 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT for table `evento`
 --
 ALTER TABLE `evento`
-  MODIFY `idEvento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `idEvento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- Constraints for dumped tables
 --
 
 --
--- Limitadores para a tabela `mensagens`
+-- Limitadores para a tabela `dados_casamento`
 --
-ALTER TABLE `mensagens`
-  ADD CONSTRAINT `evento_ID_msg` FOREIGN KEY (`evento_ID`) REFERENCES `evento` (`idEvento`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `dados_casamento`
+  ADD CONSTRAINT `casamento_ID_msg` FOREIGN KEY (`evento_ID`) REFERENCES `evento` (`idEvento`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limitadores para a tabela `dados_evento`
+--
+ALTER TABLE `dados_evento`
+  ADD CONSTRAINT `evento_ID_msg` FOREIGN KEY (`evento_ID`) REFERENCES `evento` (`idEvento`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Limitadores para a tabela `tokens`

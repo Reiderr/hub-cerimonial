@@ -15,6 +15,8 @@
 		private $evento_layout;
 		private $evento_data;
 		private $tipo_evento;
+		private $evento_status;
+		private $evento_URL;
 
 		//declaração de métodos
 		public function __construct(){
@@ -27,6 +29,8 @@
 				$this->evento_longitude = NULL;
 				$this->evento_layout = NULL;
 				$this->tipo_evento = NULL;
+				$this->evento_status = NULL;
+				$this->evento_URL = NULL;
 		}
 		public function initEvento($id){
 			//conexão e request
@@ -53,12 +57,22 @@
 				$this->evento_longitude = $row['local_Longitude'];
 				$this->evento_layout = $row['layout'];
 				$this->tipo_evento = $row['tipo_evento'];
+				$this->evento_status = $row['published'];
+				$this->evento_URL = $row['url'];
 			}
 		}
 
 		//métodos gets
 		public function getNome(){
 			return $this->evento_nome;
+		}
+
+		public function getURL(){
+			return $this->evento_URL;
+		}
+
+		public function getStatus(){
+			return $this->evento_status;
 		}
 
 		public function getId(){

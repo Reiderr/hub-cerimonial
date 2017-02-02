@@ -105,11 +105,8 @@
                         <p>Notifications</p>
                     </a>
                 </li>
-				<li class="active-pro">
-                    <a href="upgrade.html">
-                        <i class="pe-7s-rocket"></i>
-                        <p>Upgrade to PRO</p>
-                    </a>
+                <li class="active-pro">
+                    <p><?php getVersion(); ?></p>
                 </li>
             </ul>
     	</div>
@@ -133,7 +130,7 @@
 
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a href="#">
+                            <a href="assets/backend/logout.php">
                                 Log out
                             </a>
                         </li>

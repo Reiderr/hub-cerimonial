@@ -2,11 +2,12 @@
 <html>
   <head>
     <?php 
-        include '../../backend/eventCasamento.php';
+        include_once '../../backend/eventCasamento.php';
+        include_once '../../backend/functions.php';
         $nome = ($_REQUEST['nome']);
         $casamento = new Casamento();
         $casamento->initCasamento($nome);
-
+        verificaEventoAtivo($nome);// verifica se o evento está ativado, caso não esteja o usuário precisa logar para vizualiza-lo
     ?>
     <meta charset="utf-8">
     <!-- carrega o titulo do evento -->

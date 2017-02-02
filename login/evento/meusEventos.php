@@ -4,9 +4,8 @@
     <?php
         // recupera o nome do usuário logado na sessão, aqui também será criada a verificação de login para
         // acesso posteriormente
-        include_once '../dbconfig.php';
-        session_start();
-        $user = $_SESSION['user_session'];
+        include_once 'assets/backend/functions.php';
+        $user = iniciarSessao();
     ?>
 
 	<meta charset="utf-8" />
@@ -106,10 +105,7 @@
                     </a>
                 </li>
 				<li class="active-pro">
-                    <a href="upgrade.html">
-                        <i class="pe-7s-rocket"></i>
-                        <p>Upgrade to PRO</p>
-                    </a>
+                    <p><?php getVersion(); ?></p>
                 </li>
             </ul>
     	</div>
@@ -133,7 +129,7 @@
 
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a href="#">
+                            <a href="assets/backend/logout.php">
                                 Log out
                             </a>
                         </li>
@@ -158,6 +154,7 @@
                                     <thead>
                                         <th>ID</th>
                                         <th>Nome</th>
+                                        <th>URL</th>
                                         <th>Data</th>
                                         <th>Local</th>
                                         <th>Gerenciar</th>
@@ -177,35 +174,42 @@
                                                     echo '</tr>';
                                                 }
 
-                                                foreach($stmt as $row){
+                                                foreach($stmt as $row){// imprime as linhas da tabela com os botões de gerenciamento
                                                     echo '<tr>';
                                                     echo "<td>".$row['idEvento']."</td>";
                                                     echo"<td>".$row['nomeEvento']."</td>";
+                                                    echo "<td>".$row['url']."</td>";
                                                     echo"<td>".$row['data_evento']."</td>";
                                                     echo"<td>".$row['local']."</td>";
                                                     if ($row['tipo_evento'] == "casamento"){
                                                         echo<<<EOT
-                                                        <td> <button onclick="window.location.href='customCasamento.php?url={$row['url']}'" 
-                                                        class ="btn btn-primary">Editar</button>
-                                                        <button onclick="window.location.href='changeTemplate.php?url={$row['url']}'" 
-                                                        class ="btn btn-warning">Alterar Template</button>
-                                                        <button onclick="window.location.href='eventos.php?nome={$row['url']}'" 
-                                                        class ="btn btn-success btn-fill">Vizualizar</button>
-                                                        <button onclick="window.location.href='assets/backend/deleteEvento.php?url={$row['url']}'" 
-                                                        class ="btn btn-danger btn-fill">delete</button> 
+                                                        <td> <a title="Editar" onclick="window.location.href='customCasamento.php?url={$row['url']}'" 
+                                                        class ="btn btn-icon pe-7s-pen"></a>
+
+                                                        <a title="Alterar Template" onclick="window.location.href='changeTemplate.php?url={$row['url']}'" 
+                                                        class ="btn btn-icon pe-7s-news-paper"></a>
+
+                                                        <a title="Vizualizar" onclick="window.location.href='eventos.php?nome={$row['url']}'" 
+                                                        class ="btn btn-icon-success pe-7s-look"></a>
+
+                                                        <a title="Deletar Evento" onclick="window.location.href='assets/backend/deleteEvento.php?url={$row['url']}'" 
+                                                        class ="btn btn-icon-danger pe-7s-trash"></a> 
                                                         </td>
 EOT;
                                                     }
                                                     if ($row['tipo_evento'] == "festa"){
                                                         echo<<<EOT
-                                                        <td> <button onclick="window.location.href='customEvento.php?url={$row['url']}'" 
-                                                        class ="btn btn-primary">Editar</button> 
-                                                        <button onclick="window.location.href='changeTemplate.php?url={$row['url']}'" 
-                                                        class ="btn btn-warning">Alterar Template</button>
-                                                        <button onclick="window.location.href='eventos.php?nome={$row['url']}'" 
-                                                        class ="btn btn-success btn-fill">Vizualizar</button>
-                                                        <button onclick="window.location.href='assets/backend/deleteEvento.php?url={$row['url']}'" 
-                                                        class ="btn btn-danger btn-fill">delete</button> 
+                                                        <td> <a title="Editar" onclick="window.location.href='customEvento.php?url={$row['url']}'" 
+                                                        class ="btn btn-icon pe-7s-pen"></a> 
+
+                                                        <a title="Alterar Template" onclick="window.location.href='changeTemplate.php?url={$row['url']}'" 
+                                                        class ="btn btn-icon pe-7s-news-paper"></a>
+
+                                                        <a title="Vizualizar" onclick="window.location.href='eventos.php?nome={$row['url']}'" 
+                                                        class ="btn btn-icon-success pe-7s-look"></a>
+
+                                                        <a title = "Deletar Evento" onclick="window.location.href='assets/backend/deleteEvento.php?url={$row['url']}'" 
+                                                        class ="btn btn-icon-danger pe-7s-trash"></a> 
                                                         </td>
 EOT;
                                                     }
