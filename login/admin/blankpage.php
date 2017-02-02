@@ -4,7 +4,6 @@
     <?php
         // recupera o nome do usuário logado na sessão, aqui também será criada a verificação de login para
         // acesso posteriormente
-        include_once 'assets/backend/dbconfig.php';
         include_once 'assets/backend/functions.php';
         $user = iniciarSessao();
     ?>
@@ -78,13 +77,13 @@
                 <li>
                     <a href="meusEventos.php">
                         <i class="pe-7s-note2"></i>
-                        <p>Meus Eventos</p>
+                        <p>Gerenciar Eventos</p>
                     </a>
                 </li>
                 <li>
-                    <a href="typography.html">
-                        <i class="pe-7s-news-paper"></i>
-                        <p>Typography</p>
+                    <a href="manageUsers.php">
+                        <i class="pe-7s-users"></i>
+                        <p>Gerenciar Usuários</p>
                     </a>
                 </li>
                 <li>
@@ -146,60 +145,10 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">Vamos Criar seu evento, iremos customiza-lo em seguida!</h4>
+                                <h4 class="title">Criar Evento</h4>
                             </div>
                             <div class="content">
-                                <form method="POST" id="cadastroEvento" name = "cadastroEvento">
-                                    <div class="row">
-                                        <div class="col-md-8">
-                                            <div class="form-group">
-                                                <label>Nome do Evento</label>
-                                                <input type="text" name='nomeEvento' class="form-control" placeholder="Nome do Evento" >
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail1">Data do evento</label>
-                                                <input type="date" required name='dataEvento' class="form-control">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>Endereço da página do evento (URL)</label>
-                                                <input type="text" name = "URL" class="form-control" placeholder="este será o endereço do seu site: Ex meu_site = tbd.com/evento/meu_site">
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <input name = "tipo" type="text" id="tipo" value= <?php 
-
-                                    if (!isset($_REQUEST['tipo'])) 
-
-                                        {echo "erro!";}  // verificar se a url de entrada não foi alterada, caso esse isso resulte em erro, retornar para página de criação
-
-                                    else
-
-                                        {$tipo = $_REQUEST['tipo']; echo "$tipo";} 
-
-                                    ?> style= "visibility:hidden"  ></input>
-
-                                    <div> será adicionado aqui uma escolha para template, também será criada uma tela para escolher
-                                        individualmente depois! (acredito que será um função bem utilizada)</div>
-
-
-                                    <!-- exibe mensagem de erro ou sucesso #trabalhar esses outputs no javascript conforme desenvolvimento -->
-                                    <div id = "success"></div>
-                                    <div id = "error"></div>
-
-                                    <div class ="row">
-                                        <button name = "criarEvento" id ="criarEvento" class="btn btn-success btn-fill pull-right">Criar Evento</button>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </form>
+                               <!-- conteudo da página aqui -->
                             </div>
                         </div>
                     </div>
@@ -211,9 +160,6 @@
 
 
 </body>
-<footer>
-    alpha build 1.0
-</footer>
 
     <!--   Core JS Files   -->
     <script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>

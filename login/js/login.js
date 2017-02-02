@@ -47,7 +47,7 @@ $('document').ready(function()
     }
      if(response =="admin"){
       $("#btn-login").html(' Entrando ...');
-      setTimeout(' window.location.href = "evento/dashboard2.php"; ',1000);
+      setTimeout(' window.location.href = "admin/dashboard.php"; ',1000);
      }
 
      if(response =="erro"){

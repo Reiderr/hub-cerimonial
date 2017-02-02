@@ -78,13 +78,13 @@
                 <li>
                     <a href="meusEventos.php">
                         <i class="pe-7s-note2"></i>
-                        <p>Meus Eventos</p>
+                        <p>Gerenciar Eventos</p>
                     </a>
                 </li>
                 <li>
-                    <a href="typography.html">
-                        <i class="pe-7s-news-paper"></i>
-                        <p>Typography</p>
+                    <a href="manageUsers.php">
+                        <i class="pe-7s-users"></i>
+                        <p>Gerenciar Usuários</p>
                     </a>
                 </li>
                 <li>

@@ -45,7 +45,9 @@ function verificaEventoAtivo($url){// verifica se o evento está ativo, caso est
 	$status = $evento->getStatus();
 	if ($status == NULL){
 		$user = iniciarSessaoEvento();
-		verificaDono($user, $url);
+        if (getTipoUsuario($_SESSION['user_session']) != 1){
+            verificaDono($user, $url);
+        }
 	}
 }
 
