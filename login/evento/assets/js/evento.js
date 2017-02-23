@@ -37,13 +37,13 @@ $('document').ready(function()
    url  : 'assets/backend/saveEvento.php',
    data : data,
    beforeSend: function()
-   { 
-    $("#error").fadeOut();
+   {
+    $('#error').fadeOut();
     $("#criarEvento").html('Enviando ...');
    },
    success :  function(output)
       {
-      var IS_JSON = true;      
+      var IS_JSON = true;
       try{// verifica se o retorno é o arquivo json
         var response = $.parseJSON(output);
       }
@@ -52,8 +52,8 @@ $('document').ready(function()
       }
      if ( IS_JSON == true){
        if(response[2]=='success'){// recebe o tipo de evento e a url para redirecionamento
-           
-        $("#success").fadeIn(1, function(){      
+
+        $("#success").fadeIn(1, function(){
           $("#success").html('<div class="alert alert-success"> <h3> Evento Criado com Sucesso, agora vamos customiza-lo</h3></div>');
           $("#criarEvento").html('salvo! ');
         });
@@ -68,7 +68,7 @@ $('document').ready(function()
       }
     }
      if (IS_JSON == false){
-      $("#error").fadeIn(1, function(){      
+      $("#error").fadeIn(1, function(){
         $("#error").html('<div class="alert alert-success"> <h3> URL do evento está em uso, por favor tente outra!</h3></div>');
         $("#error").fadeOut(5000);
         $("#criarEvento").html('Criar Evento');
