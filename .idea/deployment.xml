@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="Hub-Cerimonial">
+    <serverData>
+      <paths name="Hub-Cerimonial">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="hub-cerimonial" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>

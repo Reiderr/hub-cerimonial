@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="evento@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.0">
+    <root id="1"/>
+    <schema id="2" parent="1" name="evento">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="information_schema"/>
+    <schema id="4" parent="1" name="mysql"/>
+    <schema id="5" parent="1" name="performance_schema"/>
+    <schema id="6" parent="1" name="phpmyadmin"/>
+    <schema id="7" parent="1" name="test"/>
+    <table id="8" parent="2" name="dados_casamento"/>
+    <table id="9" parent="2" name="dados_evento"/>
+    <table id="10" parent="2" name="evento"/>
+    <table id="11" parent="2" name="tokens"/>
+    <table id="12" parent="2" name="usuario"/>
+    <column id="13" parent="8" name="evento_ID">
+      <Position>1</Position>
+      <DataType>int(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="14" parent="8" name="texto_2">
+      <Position>2</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="15" parent="8" name="imagem_1">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="16" parent="8" name="imagem_2">
+      <Position>4</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="17" parent="8" name="texto_1">
+      <Position>5</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="18" parent="8" name="lista_presentes">
+      <Position>6</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <key id="19" parent="8" name="PRIMARY">
+      <ColNames>evento_ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="20" parent="8" name="casamento_ID_msg">
+      <ColNames>evento_ID</ColNames>
+      <RefSchemaName>evento</RefSchemaName>
+      <RefTableName>evento</RefTableName>
+      <RefColNames>idEvento</RefColNames>
+      <OnUpdate>update</OnUpdate>
+      <OnDelete>delete</OnDelete>
+    </foreign-key>
+    <column id="21" parent="9" name="evento_ID">
+      <Position>1</Position>
+      <DataType>int(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="22" parent="9" name="texto_2">
+      <Position>2</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="23" parent="9" name="imagem_1">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="24" parent="9" name="imagem_2">
+      <Position>4</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="25" parent="9" name="texto_1">
+      <Position>5</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="26" parent="9" name="evento_facebook">
+      <Position>6</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="27" parent="9" name="fanpage_facebook">
+      <Position>7</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <key id="28" parent="9" name="PRIMARY">
+      <ColNames>evento_ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="29" parent="9" name="evento_ID_msg">
+      <ColNames>evento_ID</ColNames>
+      <RefSchemaName>evento</RefSchemaName>
+      <RefTableName>evento</RefTableName>
+      <RefColNames>idEvento</RefColNames>
+      <OnUpdate>update</OnUpdate>
+      <OnDelete>delete</OnDelete>
+    </foreign-key>
+    <column id="30" parent="10" name="idEvento">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="31" parent="10" name="nomeEvento">
+      <Position>2</Position>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="32" parent="10" name="local">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="33" parent="10" name="url">
+      <Position>4</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="34" parent="10" name="user_Email">
+      <Position>5</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="35" parent="10" name="local_Latitude">
+      <Position>6</Position>
+      <DataType>varchar(25)|0</DataType>
+    </column>
+    <column id="36" parent="10" name="local_Longitude">
+      <Position>7</Position>
+      <DataType>varchar(25)|0</DataType>
+    </column>
+    <column id="37" parent="10" name="layout">
+      <Position>8</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="38" parent="10" name="published">
+      <Position>9</Position>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <column id="39" parent="10" name="data_evento">
+      <Position>10</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="40" parent="10" name="tipo_evento">
+      <Position>11</Position>
+      <DataType>varchar(60)|0</DataType>
+    </column>
+    <index id="41" parent="10" name="idEvento_UNIQUE">
+      <ColNames>idEvento</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="42" parent="10" name="url">
+      <ColNames>url</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="43" parent="10" name="PRIMARY">
+      <ColNames>idEvento</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="44" parent="10" name="idEvento_UNIQUE">
+      <ColNames>idEvento</ColNames>
+      <UnderlyingIndexName>idEvento_UNIQUE</UnderlyingIndexName>
+    </key>
+    <key id="45" parent="10" name="url">
+      <ColNames>url</ColNames>
+      <UnderlyingIndexName>url</UnderlyingIndexName>
+    </key>
+    <column id="46" parent="11" name="idtokens">
+      <Position>1</Position>
+      <DataType>varchar(8)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="47" parent="11" name="valor">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="48" parent="11" name="usado">
+      <Position>3</Position>
+      <DataType>tinyint(1)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="49" parent="11" name="Usuario_CPF">
+      <Position>4</Position>
+      <DataType>varchar(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="50" parent="11" name="fk_tokens_Usuário1_idx">
+      <ColNames>Usuario_CPF</ColNames>
+    </index>
+    <index id="51" parent="11" name="idtokens_UNIQUE">
+      <ColNames>idtokens</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="52" parent="11" name="PRIMARY">
+      <ColNames>idtokens</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="53" parent="11" name="idtokens_UNIQUE">
+      <ColNames>idtokens</ColNames>
+      <UnderlyingIndexName>idtokens_UNIQUE</UnderlyingIndexName>
+    </key>
+    <foreign-key id="54" parent="11" name="fk_tokens_Usuário1">
+      <ColNames>Usuario_CPF</ColNames>
+      <RefSchemaName>evento</RefSchemaName>
+      <RefTableName>usuario</RefTableName>
+      <RefColNames>CPF</RefColNames>
+      <OnUpdate>no-action</OnUpdate>
+      <OnDelete>no-action</OnDelete>
+    </foreign-key>
+    <column id="55" parent="12" name="CPF">
+      <Position>1</Position>
+      <DataType>varchar(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="56" parent="12" name="nome">
+      <Position>2</Position>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="57" parent="12" name="telefone">
+      <Position>3</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="58" parent="12" name="endereco">
+      <Position>4</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="59" parent="12" name="admin">
+      <Position>5</Position>
+      <DataType>tinyint(1)|0</DataType>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="60" parent="12" name="senha">
+      <Position>6</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="61" parent="12" name="email">
+      <Position>7</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="62" parent="12" name="CPF_UNIQUE">
+      <ColNames>CPF</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="63" parent="12" name="email">
+      <ColNames>email</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="64" parent="12" name="PRIMARY">
+      <ColNames>CPF</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="65" parent="12" name="CPF_UNIQUE">
+      <ColNames>CPF</ColNames>
+      <UnderlyingIndexName>CPF_UNIQUE</UnderlyingIndexName>
+    </key>
+    <key id="66" parent="12" name="email">
+      <ColNames>email</ColNames>
+      <UnderlyingIndexName>email</UnderlyingIndexName>
+    </key>
+  </database-model>
+</dataSource>
