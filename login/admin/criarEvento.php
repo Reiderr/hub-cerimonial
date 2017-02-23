@@ -19,6 +19,16 @@
     <meta name="viewport" content="width=device-width" />
 
 
+    <!--   Core JS Files   -->
+    <script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+    <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="assets/js/modernizr.js" type="text/javascript"></script>
+    <script src="assets/js/jquery-ui.js"></script>
+    <link rel="stylesheet" href="assets/css/jquery-ui.css">
+
+
+
+
     <!-- Bootstrap core CSS     -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
 
@@ -78,13 +88,13 @@
                 <li>
                     <a href="meusEventos.php">
                         <i class="pe-7s-note2"></i>
-                        <p>Gerenciar Eventos</p>
+                        <p>Meus Eventos</p>
                     </a>
                 </li>
                 <li>
-                    <a href="manageUsers.php">
-                        <i class="pe-7s-users"></i>
-                        <p>Gerenciar Usuários</p>
+                    <a href="typography.html">
+                        <i class="pe-7s-news-paper"></i>
+                        <p>Typography</p>
                     </a>
                 </li>
                 <li>
@@ -159,9 +169,19 @@
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">Data do evento</label>
-                                                <input type="date" required name='dataEvento' class="form-control">
+                                                <label >Data do evento</label>
+                                                <input type="date" id="dataEvento" name='dataEvento' class="form-control">
                                             </div>
+                                            <script>
+                                                  $(function(){           
+                                                    if (!Modernizr.inputtypes.date) {
+                                                        $('input[type=date]').datepicker({
+                                                              dateFormat : 'yy-mm-dd'
+                                                            }
+                                                         );
+                                                    }
+                                                 });
+                                            </script>
                                         </div>
                                     </div>
 
@@ -215,13 +235,7 @@
     alpha build 1.0
 </footer>
 
-    <!--   Core JS Files   -->
-    <script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
-	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
 
-    <!--  script google maps -->
-    <script src = "assets/js/maps.js"></script>
-    <script src="//maps.googleapis.com/maps/api/js?v=3&amp;sensor=false&amp;key=AIzaSyApzbVcgIb-qVPP3jNbCTB0TmxMmTHK0es&amp;callback=loadmap" defer></script>
 
 	<!--  Checkbox, Radio & Switch Plugins -->
 	<script src="assets/js/bootstrap-checkbox-radio-switch.js"></script>

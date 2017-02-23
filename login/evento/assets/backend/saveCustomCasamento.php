@@ -1,6 +1,10 @@
 <?php
 	include_once "eventCasamento.php";
+	ob_start();
+	require 'FirePHPCore/fb.php';
+
 	if(isset($_POST['salvarCasamento'])){
+		Fb::info("teste");
 		$casamento = new Casamento();
 		// recebe os dados de atualização do evento
 		$id = trim($_POST['url']);

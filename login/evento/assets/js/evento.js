@@ -19,6 +19,9 @@ $('document').ready(function()
             URL:{
                       required: "digite a URL"
                      },
+            dataEvento:{
+                      required: "digite uma data"
+          },
        },
     submitHandler: submitEvento
        });

@@ -7,6 +7,7 @@
         include_once 'assets/backend/dbconfig.php';
         include_once 'assets/backend/functions.php';
         $user = iniciarSessao();
+
     ?>
 
 	<meta charset="utf-8" />
@@ -17,6 +18,16 @@
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
+
+
+    <!--   Core JS Files   -->
+    <script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+    <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="assets/js/modernizr.js" type="text/javascript"></script>
+    <script src="assets/js/jquery-ui.js"></script>
+    <link rel="stylesheet" href="assets/css/jquery-ui.css">
+
+
 
 
     <!-- Bootstrap core CSS     -->
@@ -159,9 +170,19 @@
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">Data do evento</label>
-                                                <input type="date" required name='dataEvento' class="form-control">
+                                                <label >Data do evento</label>
+                                                <input type="date" id="dataEvento" name='dataEvento' class="form-control">
                                             </div>
+                                            <script>
+                                                  $(function(){           
+                                                    if (!Modernizr.inputtypes.date) {
+                                                        $('input[type=date]').datepicker({
+                                                              dateFormat : 'yy-mm-dd'
+                                                            }
+                                                         );
+                                                    }
+                                                 });
+                                            </script>
                                         </div>
                                     </div>
 
@@ -215,13 +236,7 @@
     alpha build 1.0
 </footer>
 
-    <!--   Core JS Files   -->
-    <script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
-	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
 
-    <!--  script google maps -->
-    <script src = "assets/js/maps.js"></script>
-    <script src="//maps.googleapis.com/maps/api/js?v=3&amp;sensor=false&amp;key=AIzaSyApzbVcgIb-qVPP3jNbCTB0TmxMmTHK0es&amp;callback=loadmap" defer></script>
 
 	<!--  Checkbox, Radio & Switch Plugins -->
 	<script src="assets/js/bootstrap-checkbox-radio-switch.js"></script>

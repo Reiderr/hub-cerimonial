@@ -34,6 +34,4 @@ include 'dbconfig.php';
 		// Criar aqui uma página de confirmação de cadastro, algo como 'enviar email de confirmação' e após isso retornar para a página de login
 		header("Location: ../login/index.html");
 	}
-
-    mysql_close($con);
 ?>
