@@ -38,6 +38,8 @@ class Festa extends Evento{
 
 	}
 
+
+
 	public function initFesta($url){
 		parent::initEvento($url);
 		$con = connectDB();
